@@ -2,33 +2,22 @@ import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
 import Shicha from '../../assets/shicha.png';
+import Button from './Button';
 
 const Main = () => {
   return (
     <View style={styles.container}>
-      <Text
-        style={{
-          textTransform: 'uppercase',
-          color: '#DAB992',
-          fontSize: 36,
-          textAlign: 'center',
-          fontWeight: 'bold',
-        }}>
-        your virtual shisha master
-      </Text>
-      <Text
-        style={{
-          textAlign: 'center',
-          color: '#D1D1D1',
-          fontSize: 16,
-          marginTop: 10,
-        }}>
+      <Text style={styles.titleTxt}>your virtual shisha master</Text>
+      <Text style={styles.descriptionTxt}>
         We deliver custom shisha straight to your door
       </Text>
-      <Image
-        source={Shicha}
-        style={{ width: '80%', height: '40%', marginTop: 10 }}
-      />
+      <Image source={Shicha} style={styles.img} />
+      <Button style={[styles.btn, styles.orderBtn]}>
+        <Text style={styles.ctaTxt}>Order shisha now</Text>
+      </Button>
+      <Button style={styles.btn}>
+        <Text style={styles.ctaTxt}>Browse flavors</Text>
+      </Button>
     </View>
   );
 };
@@ -42,4 +31,24 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     alignItems: 'center',
   },
+  titleTxt: {
+    textTransform: 'uppercase',
+    color: '#DAB992',
+    fontSize: 36,
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+  descriptionTxt: {
+    textAlign: 'center',
+    color: '#D1D1D1',
+    fontSize: 16,
+    marginTop: 10,
+  },
+  img: { width: '80%', height: '40%', marginTop: 10 },
+  btn: { width: '100%', padding: 10, marginTop: 10, borderRadius: 5 },
+  orderBtn: {
+    borderColor: '#DAB992',
+    borderWidth: 1,
+  },
+  ctaTxt: { color: '#DAB992', fontWeight: 'bold', fontSize: 26 },
 });

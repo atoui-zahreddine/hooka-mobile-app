@@ -10,11 +10,11 @@ import Button from '../components/Button';
 const Header = () => {
   return (
     <View style={styles.header}>
-      <Button>
+      <Button style={styles.btn}>
         <Icon name='shopping-outline' size={30} color='#DAB992' />
       </Button>
       <Image source={Logo} style={styles.img} />
-      <Button>
+      <Button style={styles.btn}>
         <BurgerMenu />
       </Button>
     </View>
@@ -28,6 +28,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  btn: {
+    width: 60,
+    height: 60,
+    borderRadius: 10,
   },
   img: {
     width: 80,

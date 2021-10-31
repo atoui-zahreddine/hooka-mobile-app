@@ -12,8 +12,8 @@ const GoogleLoginButton = ({ onPress, loading }) => {
       onPress={onPress}
       style={styles.btn}
       disabled={loading}
-      accessibilityLabel='sigin with google '>
-      {loading && <ActivityIndicator color={'#fff'} style={styles.spiner} />}
+      accessibilityLabel='Sign In with google '>
+      {loading && <ActivityIndicator color={'#fff'} style={styles.spinner} />}
       <Text style={styles.txt}>Sign in with google </Text>
     </TouchableOpacity>
   );
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   txt: {
     color: 'white',
   },
-  spiner: {
+  spinner: {
     marginRight: 10,
   },
 });

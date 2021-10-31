@@ -19,7 +19,8 @@ const BurgerMenu = () => {
             height: 2,
             backgroundColor: '#DAB992',
             borderRadius: 2,
-          }}></View>
+          }}
+        />
       ))}
     </View>
   );

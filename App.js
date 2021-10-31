@@ -7,7 +7,7 @@ import Welcome from './src/screens/Welcome';
 export default function App() {
   return (
     <View style={styles.container}>
-      <StatusBar style='auto' />
+      <StatusBar style='light' backgroundColor='#151515' />
       <Welcome />
     </View>
   );

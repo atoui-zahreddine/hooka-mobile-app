@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
 
-import UserProfile from '../components/UserProfile';
-import GoogleLoginButton from '../components/GoogleLoginButton';
+import UserProfile from "../components/UserProfile";
+import GoogleLoginButton from "../components/GoogleLoginButton";
 
-import * as GoogleAuth from '../services/GoogleAuth';
+import * as GoogleAuth from "../services/GoogleAuth";
 
-export default function App() {
+export default function Auth() {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -14,10 +14,10 @@ export default function App() {
     try {
       setLoading(true);
       const result = await GoogleAuth.login();
-      if (result.type === 'success') {
+      if (result.type === "success") {
         setUser(result.user);
       } else {
-        console.log('google sign in cancelled');
+        console.log("google sign in cancelled");
       }
       setLoading(false);
     } catch (e) {
@@ -40,8 +40,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

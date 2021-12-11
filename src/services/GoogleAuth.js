@@ -1,10 +1,10 @@
-import * as Google from 'expo-google-app-auth';
+import * as Google from "expo-google-app-auth";
 
 const login = async () =>
   await Google.logInAsync({
     androidClientId:
-      '1006945168952-2bnvid7khru5ppftieegg9jocj3f4fnl.apps.googleusercontent.com',
-    scopes: ['profile', 'email'],
+      "626479532040-3rkomc4lo2lobpmnbppo8b7171s4a4kf.apps.googleusercontent.com",
+    scopes: ["profile", "email"],
   });
 
 export { login };

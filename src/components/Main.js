@@ -8,16 +8,16 @@ import GoogleLoginButton from "./GoogleLoginButton";
 const Main = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.titleTxt}>your virtual shisha master</Text>
+      <Text style={styles.titleTxt}>your virtual Dokken</Text>
       <Text style={styles.descriptionTxt}>
-        We deliver custom shisha straight to your door
+        We deliver your favourite products straight to your door
       </Text>
       <Image source={Shicha} style={styles.img} />
       <Button style={[styles.btn, styles.orderBtn]}>
-        <Text style={styles.ctaTxt}>Order shisha now</Text>
+        <Text style={styles.ctaTxt}>Order now</Text>
       </Button>
       <Button style={styles.btn}>
-        <Text style={styles.ctaTxt}>Browse flavors</Text>
+        <Text style={styles.ctaTxt}>Browse products</Text>
       </Button>
     </View>
   );

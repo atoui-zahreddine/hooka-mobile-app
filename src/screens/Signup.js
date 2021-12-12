@@ -1,3 +1,5 @@
+// components/signup.js
+
 import React, { Component } from "react";
 import {
   StyleSheet,
@@ -8,21 +10,15 @@ import {
   Alert,
   ActivityIndicator,
 } from "react-native";
-
 import firebase from "../services/Firebase";
 
-import UserProfile from "../components/UserProfile";
-import GoogleLoginButton from "../components/GoogleLoginButton";
-
-import * as GoogleAuth from "../services/GoogleAuth";
-
-export default class Auth extends Component {
+export default class Signup extends Component {
   constructor() {
     super();
     this.state = {
+      displayName: "",
       email: "",
       password: "",
-      user: "",
       isLoading: false,
     };
   }
@@ -33,43 +29,30 @@ export default class Auth extends Component {
     this.setState(state);
   };
 
-  userLogin = () => {
+  registerUser = () => {
     if (this.state.email === "" && this.state.password === "") {
-      Alert.alert("Enter details to signin!");
+      Alert.alert("Enter details to signup!");
     } else {
       this.setState({
         isLoading: true,
       });
       firebase
         .auth()
-        .signInWithEmailAndPassword(this.state.email, this.state.password)
+        .createUserWithEmailAndPassword(this.state.email, this.state.password)
         .then((res) => {
-          console.log(res);
-          console.log("User logged-in successfully!");
+          res.user.updateProfile({
+            displayName: this.state.displayName,
+          });
+          console.log("User registered successfully!");
           this.setState({
             isLoading: false,
+            displayName: "",
             email: "",
             password: "",
           });
-          this.props.navigation.navigate("Dashboard");
+          this.props.navigation.navigate("Login");
         })
         .catch((error) => this.setState({ errorMessage: error.message }));
-    }
-  };
-
-  loginWithGoogle = async () => {
-    try {
-      this.setState({ isLoading: true });
-      const result = await GoogleAuth.login();
-      if (result.type === "success") {
-        this.setState({ user: result.user });
-      } else {
-        console.log("google sign in cancelled");
-      }
-      this.setState({ isLoading: false });
-    } catch (e) {
-      console.log(e);
-      this.setState({ isLoading: false });
     }
   };
 
@@ -81,9 +64,14 @@ export default class Auth extends Component {
         </View>
       );
     }
-
     return (
       <View style={styles.container}>
+        <TextInput
+          style={styles.inputStyle}
+          placeholder="Name"
+          value={this.state.displayName}
+          onChangeText={(val) => this.updateInputVal(val, "displayName")}
+        />
         <TextInput
           style={styles.inputStyle}
           placeholder="Email"
@@ -100,26 +88,21 @@ export default class Auth extends Component {
         />
         <Button
           color="#3740FE"
-          title="Signin"
-          onPress={() => this.userLogin()}
+          title="Signup"
+          style={[styles.btn, styles.orderBtn]}
+          onPress={() => this.registerUser()}
         />
 
         <Text
           style={styles.loginText}
-          onPress={() => this.props.navigation.navigate("Signup")}
+          onPress={() => this.props.navigation.navigate("Login")}
         >
-          Don't have account? Click here to signup
+          Already Registered? Click here to login
         </Text>
-        <GoogleLoginButton
-          onPress={this.loginWithGoogle}
-          loading={this.state.isLoading}
-        />
       </View>
     );
   }
 }
-
-//
 
 const styles = StyleSheet.create({
   container: {
@@ -142,6 +125,11 @@ const styles = StyleSheet.create({
     color: "#3740FE",
     marginTop: 25,
     textAlign: "center",
+  },
+  btn: { width: "100%", padding: 10, marginTop: 10, borderRadius: 5 },
+  orderBtn: {
+    borderColor: "#DAB992",
+    borderWidth: 1,
   },
   preloader: {
     left: 0,

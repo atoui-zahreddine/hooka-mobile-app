@@ -1,8 +1,8 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
-import Header from '../components/Header';
-import Main from '../components/Main';
+import Header from "../components/Header";
+import Main from "../components/Main";
 
 const Welcome = () => {
   return (
@@ -18,10 +18,10 @@ export default Welcome;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: '100%',
-    width: '100%',
+    height: "100%",
+    width: "100%",
     paddingHorizontal: 30,
     paddingVertical: 40,
-    backgroundColor: '#151515',
+    backgroundColor: "#151515",
   },
 });
